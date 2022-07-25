@@ -1,20 +1,97 @@
-# 내 차 팔기 서비스
-내 차 팔기 서비스는 소비자가 직접 사러 갈 필요없이 간편하게 온라인에서 등록을 하면 시세정보도 알 수 있고 딜러와 연결이 되는 웹 서비스입니다.
+# Selling my car [![Npm package version](https://img.shields.io/npm/v/eslint-config-prettier)](https://www.npmjs.com/package/npm/v/8.5.0) [![GitHub latest commit](https://img.shields.io/github/last-commit/kolonDT/202206_wecode)](https://github.com/kolonDT/202206_wecode/commit) ![Generic badge](https://img.shields.io/badge/PRs-welcome-orange.svg)
 
-## Introduction
+> 자동차 번호 입력으로 등록 된 차량 정보와 시세 정보를 불러오며 판매까지 이어지는 서비스를 제공합니다. <br/>
+> 접수 된 견적은 관리자 페이지를 통해 지점 별 딜러 배정 및 견적 상태 관리가 가능합니다.
 
-- 내 차 팔기 서비스를 제공하는 Kolon X JustCode 프로젝트
-- 개발은 초기 세팅부터 전부 직접 구현했으며,모두 백엔드와 연결하여 dummy data를 이용하여 개발하였습니다.
-- 진행 기간 : 2022.05.06 ~ 2022.06.02
-- [Back-end GitHub 바로가기](https://github.com/kolonDT/202205_wecode_en)
+<br/>
+<a href="https://github.com/kolonDT/202206_wecode/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=kolonDT/202206_wecode" />
+</a>
 
-## DB modeling
-![2](https://user-images.githubusercontent.com/21071903/171773721-b6c65832-322d-4090-8aae-7dbf142ff070.png)
+<p align="right"> Supported by <a href="https://wecode.co.kr/"><img src="https://raw.githubusercontent.com/NexClipper/exporterhub.io/master/assets/wecode_logo.jpg" width= 120></a></p>
 
-## 설치방법
-1. git clone https://github.com/kolonDT/202205_wecode_en.git (backend repo를 다운받습니다)
-2. .env_SAMPLE -> .env로 수정 후 .env에 백앤드 port, 백앤드 url, 디비 비밀번호, 디비 포트번호를 설정합니다.
-3. .env와 docker-compose.yml 파일이 존재하는 경로에서 docker compose up을 수행합니다.
-4. localhost:8080 혹은 올라간 frontend서버 아이피 주소:8080로 접속하면 아래와 같은 화면이 뜨면 완료입니다.
+<br/>
 
-![1](https://user-images.githubusercontent.com/21071903/171775063-2c257842-5095-4789-975f-a81da14c359d.png)
+## 📜 Table of Contents
+* [Demo Video](https://github.com/kolonDT/202206_wecode#-demo-video)
+* [Features](https://github.com/kolonDT/202206_wecode#-features)
+* [Contribute Setup](https://github.com/kolonDT/202206_wecode#-contribute-Setup)
+* [Need to know](https://github.com/kolonDT/202206_wecode#-need-to-know)
+* [Main Service Flow](https://github.com/kolonDT/202206_wecode#-main-service-flow)
+* [DataBase Modeling](https://github.com/kolonDT/202206_wecode#-database-modeling)
+* [Backend Repository](https://github.com/kolonDT/202206_wecode_api)
+
+<br/>
+
+## 🎥 Demo Video
+
+* 전체 영상을 보려면 gif를 클릭해주세요👇
+  [![readme_sample3](https://user-images.githubusercontent.com/97112697/179683290-d65fb42d-3846-438b-9ba6-12df295fd973.gif)](https://youtu.be/)
+
+<br/>
+
+## 🔑 Features 
+<!--lint disable no-undefined-references-->
+* [x] 차량 번호를 통한 회원 확인
+* [x] 카카오 로그인 인증 및 회원가입
+* [x] 차량 정보 조회
+  * [x] DB 내 차량 정보 호출 (car365 api 대체)
+  * [x] 차량 시세 조회 및 그래프 출력
+* [x] 차량 변동 정보 입력
+  * [ ] 차량 사진 압축 업로드
+* [x] 개인 정보 입력
+  * [x] 카카오 맵을 이용한 주소 검색 및 입력
+  * [ ] 카카오 맵 마커를 이용한 현재 위치 이동
+* [x] 내 견적 확인
+* [x] 견적 상태 알림
+
+<br/>
+
+## 🛠 Contribute Setup
+
+**main 브런치를 Fork하고, clone 받으세요. 개발을 시작하기 전에 꼭 error 메세지가 없는지 확인하시길 바랍니다!**
+> '내 차 팔기 서비스'는 npm 워크스페이스를 사용하므로 npm7을 기준으로 환경을 설정해야 합니다. <br/>
+> 하위 버전을 사용하는 경우 패키지 별로 직접 종속성을 설치해야 하니 주의바랍니다.
+> 
+> 🐳 Coming soon new installation method with Docker ...
+
+```
+$ git clone https://github.com/{your-personal-repo}/202206_wecode.git
+# install dependencies
+$ npm install
+# serve with hot reload at localhost:3000
+$ npm start
+```
+### Pull Request
+PR을 업로드하기 전에 테스트를 실행하여 오류가 없는지 꼭 확인하세요. 오류가 없으면 commit 후 push하면 됩니다 🥳
+
+<br/>
+
+## 💡 Need to know
+
+### 2회 차 카카오 로그인 테스트 시
+1. [카카오 계정 관리](https://accounts.kakao.com/weblogin/account/partner#pageConnectedOpenAppList)에 가입하였던 카카오 계정으로 로그인
+2. 연결 된 서비스 관리 중 'Wecode_Kolon'을 해제
+3. 테스트 웹 페이지에서 local storage에 저장되어 있는 정보 삭제
+4. 내 차 팔기 서비스 카카오 로그인 인증
+
+<br/>
+
+## 🚙 Main Service Flow
+<br/>
+<p align="center"><img width="640" alt="image" src="https://user-images.githubusercontent.com/97112697/178914034-95d0754b-a354-4a43-bf43-bb4c81c13149.png"><p/>
+<br/>
+
+
+## 💾 DataBase Modeling
+<p align="center">
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/21071903/171773721-b6c65832-322d-4090-8aae-7dbf142ff070.png">
+</p>
+
+<br/>
+
+## 👉 Backend Repository
+[백엔드 레포지토리 바로가기](https://github.com/kolonDT/202206_wecode_api)
+
+<br/>
+
